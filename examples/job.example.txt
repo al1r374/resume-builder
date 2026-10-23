@@ -1,0 +1,26 @@
+Job Title: Senior Backend Engineer
+
+About the role:
+We are hiring a Senior Backend Engineer to design and operate scalable marketplace services.
+
+Required skills:
+- Strong experience with Python and/or Go
+- Relational databases (PostgreSQL or MySQL)
+- Message queues (RabbitMQ or Kafka)
+- Docker and CI/CD
+- REST and GraphQL APIs
+
+Preferred skills:
+- Experience with search systems
+- Redis caching
+- Observability with Grafana or ELK
+- Marketplace or fintech domain knowledge
+
+Responsibilities:
+- Design and implement backend microservices
+- Improve reliability and performance of high-traffic APIs
+- Collaborate with product and infrastructure teams
+- Write tests and participate in code review
+
+Seniority: Senior
+Location: Remote

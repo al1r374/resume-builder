@@ -1,0 +1,33 @@
+{
+  "name": "resume-builder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AI-powered resume generator with CLI and Chrome Extension",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20.16.0"
+  },
+  "scripts": {
+    "build": "pnpm -r --filter=./packages/* build && pnpm -r --filter=./apps/* build",
+    "dev:server": "node --import tsx apps/local-server/src/index.ts",
+    "dev:cli": "pnpm --filter @resume-builder/cli start",
+    "test": "pnpm --filter @resume-builder/tests test",
+    "lint": "eslint \"packages/*/src/**/*.ts\" \"apps/*/src/**/*.ts\" \"tests/**/*.ts\"",
+    "typecheck": "pnpm -r --filter=./packages/* typecheck && pnpm -r --filter=./apps/* typecheck && pnpm --filter @resume-builder/tests typecheck",
+    "cli": "node --import tsx apps/cli/src/index.ts",
+    "validate-profile": "node --import tsx apps/cli/src/index.ts validate-profile --profile ./assets/profile.yaml",
+    "generate:sample": "node --import tsx apps/cli/src/index.ts generate --profile ./assets/profile.yaml --job ./assets/jobs/example.txt --template modern --language en --output ./output/sample-modern.pdf --force --provider mock",
+    "generate:sample-ats": "node --import tsx apps/cli/src/index.ts generate --profile ./assets/profile.yaml --job ./assets/jobs/example.txt --template ats --language en --output ./output/sample-ats.pdf --force --provider mock",
+    "build:extension": "pnpm --filter @resume-builder/chrome-extension build",
+    "playwright:install": "pnpm --filter @resume-builder/pdf-renderer exec playwright install chromium"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/node": "^22.13.10",
+    "eslint": "^9.22.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.1"
+  }
+}

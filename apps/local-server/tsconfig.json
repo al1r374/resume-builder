@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": true
+  },
+  "include": ["src/**/*.ts"],
+  "references": [
+    { "path": "../../packages/shared" },
+    { "path": "../../packages/ai-provider" },
+    { "path": "../../packages/core" },
+    { "path": "../../packages/pdf-renderer" }
+  ]
+}

@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume Template — Modern Teal</title>
+  <style>
+    :root {
+      --teal: #8bc9c8;
+      --teal-dark: #4caaa9;
+      --ink: #292d31;
+      --muted: #626a70;
+      --line: #353a3e;
+      --paper: #fff;
+      --panel: #f0f1f2;
+      --page-bg: #e9ecec;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--page-bg); }
+    body {
+      margin: 0;
+      padding: 28px;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      line-height: 1.45;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 8mm;
+      background: var(--paper);
+      box-shadow: 0 12px 38px rgba(0,0,0,.12);
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* Decorative corner accents inspired by the reference image. */
+    .resume::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      width: 26%;
+      height: 7mm;
+      background: var(--teal);
+    }
+    .resume::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      width: 7mm;
+      height: 38mm;
+      background: var(--teal);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 34% 1fr;
+      gap: 6mm;
+      min-height: 281mm;
+    }
+
+    .sidebar {
+      background: var(--panel);
+      padding: 0 4mm 5mm;
+      min-width: 0;
+    }
+
+    .portrait-panel {
+      margin: 0 -4mm 6mm;
+      min-height: 42mm;
+      padding: 6mm 3mm;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portrait {
+      width: 29mm;
+      height: 29mm;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      background: #d8e4e4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portrait-placeholder {
+      width: 29mm;
+      height: 29mm;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      background: #d8e4e4;
+      display: grid;
+      place-items: center;
+      color: #526365;
+      font-size: 8px;
+      text-align: center;
+      padding: 4px;
+    }
+
+    .main {
+      min-width: 0;
+      padding: 8mm 2mm 4mm 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.08;
+      letter-spacing: .2px;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+    }
+    h1 .accent { color: var(--teal-dark); }
+    .headline {
+      margin: 4px 0 16px;
+      color: #454c50;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .35px;
+      text-transform: uppercase;
+    }
+
+    .section { margin: 0 0 17px; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0 0 9px;
+      padding: 0 0 5px;
+      border-bottom: 1.5px solid var(--line);
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .2px;
+    }
+    .section-title .icon {
+      flex: 0 0 17px;
+      width: 17px;
+      height: 17px;
+      display: inline-grid;
+      place-items: center;
+      background: var(--ink);
+      color: white;
+      font-size: 10px;
+      line-height: 1;
+    }
+
+    .sidebar .section { margin-bottom: 19px; }
+    .sidebar .section-title { font-size: 11px; }
+
+    p { margin: 0 0 6px; }
+    .muted { color: var(--muted); }
+    .contact-list, .skill-list, .plain-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .contact-list li {
+      display: flex;
+      gap: 7px;
+      margin: 0 0 6px;
+      overflow-wrap: anywhere;
+    }
+    .contact-mark {
+      width: 13px;
+      flex: 0 0 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      font-size: 8px;
+      font-weight: bold;
+      display: inline-grid;
+      place-items: center;
+      margin-top: 1px;
+    }
+
+    .skill-list li { margin: 0 0 8px; }
+    .skill-name { display: block; margin-bottom: 3px; }
+    .skill-track { height: 3px; background: #d4d7d8; }
+    .skill-fill { display: block; height: 3px; background: var(--ink); }
+    /* Skill bars are illustrative only. Remove them in production ATS output. */
+
+    .experience-item, .education-item, .project-item {
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 10px;
+      margin: 0 0 15px;
+      break-inside: avoid;
+    }
+    .date {
+      color: #3f4549;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+    .item-content {
+      border-left: 1px solid #c6cbcd;
+      padding-left: 10px;
+      min-width: 0;
+    }
+    .item-title {
+      margin: 0 0 3px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .item-subtitle {
+      margin: 0 0 5px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #555d62;
+    }
+    .item-content p { margin-bottom: 5px; }
+    .item-content ul {
+      margin: 4px 0 0;
+      padding-left: 14px;
+    }
+    .item-content li { margin-bottom: 3px; }
+    .tag-list { margin-top: 5px; color: #4b5659; font-size: 9px; }
+
+    .references-placeholder {
+      font-size: 9px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .template-note {
+      width: 210mm;
+      margin: 12px auto 0;
+      color: #586165;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    @page { size: A4; margin: 0; }
+    @media print {
+      html, body { background: white; padding: 0; margin: 0; }
+      .resume {
+        width: auto;
+        min-height: 0;
+        margin: 0;
+        box-shadow: none;
+        padding: 8mm;
+      }
+      .template-note { display: none; }
+    }
+
+    /* Screen-friendly fallback for narrow previews. */
+    @media screen and (max-width: 850px) {
+      body { padding: 10px; }
+      .resume { width: 100%; min-height: 0; padding: 16px; }
+      .layout { grid-template-columns: 34% minmax(0, 1fr); gap: 14px; }
+      .main { padding-top: 24px; }
+      h1 { font-size: clamp(18px, 4vw, 25px); }
+      .template-note { width: 100%; }
+    }
+
+    /* ATS-first export can enable this class to replace the visual sidebar layout
+       with a single reading order. Keep the DOM order semantic. */
+    .resume.ats-single-column .layout { display: block; }
+    .resume.ats-single-column .sidebar {
+      background: white;
+      padding: 0;
+    }
+    .resume.ats-single-column .portrait-panel {
+      float: right;
+      width: 38mm;
+      min-height: 0;
+      margin: 0 0 8px 12px;
+      padding: 3mm;
+    }
+    .resume.ats-single-column .portrait,
+    .resume.ats-single-column .portrait-placeholder {
+      width: 24mm;
+      height: 24mm;
+    }
+    .resume.ats-single-column .main { padding: 8mm 0 0; }
+    .resume.ats-single-column .sidebar .section { margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <article class="resume" aria-label="Resume template">
+    <div class="layout">
+      <aside class="sidebar" aria-label="Contact and skills">
+        <div class="portrait-panel">
+          <!-- Replace with a real portrait; keep alt text descriptive. -->
+          <div class="portrait-placeholder" role="img" aria-label="Profile photo placeholder">
+            YOUR<br>PHOTO
+          </div>
+          <!-- Production example:
+          <img class="portrait" src="assets/profile.jpg" alt="Portrait of Alireza Goudarzi">
+          -->
+        </div>
+
+        <section class="section" aria-labelledby="contact-heading">
+          <h2 class="section-title" id="contact-heading"><span class="icon" aria-hidden="true">✉</span> Contact</h2>
+          <ul class="contact-list">
+            <li><span class="contact-mark" aria-hidden="true">@</span><span>alireza@example.com</span></li>
+            <li><span class="contact-mark" aria-hidden="true">in</span><span>linkedin.com/in/your-profile</span></li>
+            <li><span class="contact-mark" aria-hidden="true">⌘</span><span>github.com/your-profile</span></li>
+            <li><span class="contact-mark" aria-hidden="true">⌖</span><span>Tehran, Iran</span></li>
+          </ul>
+        </section>
+
+        <section class="section" aria-labelledby="skills-heading">
+          <h2 class="section-title" id="skills-heading"><span class="icon" aria-hidden="true">⚙</span> Technical Skills</h2>
+          <ul class="skill-list">
+            <li><span class="skill-name">Go</span><span class="skill-track"><span class="skill-fill" style="width:82%"></span></span></li>
+            <li><span class="skill-name">Python</span><span class="skill-track"><span class="skill-fill" style="width:78%"></span></span></li>
+            <li><span class="skill-name">PHP / Laravel</span><span class="skill-track"><span class="skill-fill" style="width:90%"></span></span></li>
+            <li><span class="skill-name">PostgreSQL / MySQL</span><span class="skill-track"><span class="skill-fill" style="width:78%"></span></span></li>
+            <li><span class="skill-name">Redis / RabbitMQ</span><span class="skill-track"><span class="skill-fill" style="width:70%"></span></span></li>
+          </ul>
+        </section>
+
+        <section class="section" aria-labelledby="languages-heading">
+          <h2 class="section-title" id="languages-heading"><span class="icon" aria-hidden="true">文</span> Languages</h2>
+          <p><strong>English</strong> — B2</p>
+          <p><strong>Persian</strong> — Native</p>
+        </section>
+
+        <section class="section" aria-labelledby="extras-heading">
+          <h2 class="section-title" id="extras-heading"><span class="icon" aria-hidden="true">＋</span> Additional</h2>
+          <p>Certifications, open-source contributions, or other relevant details.</p>
+        </section>
+      </aside>
+
+      <main class="main">
+        <header class="section">
+          <h1>Alireza <span class="accent">Goudarzi</span></h1>
+          <p class="headline">Senior Backend Engineer</p>
+        </header>
+
+        <section class="section" aria-labelledby="summary-heading">
+          <h2 class="section-title" id="summary-heading"><span class="icon" aria-hidden="true">▤</span> Professional Summary</h2>
+          <p>Backend engineer with experience building and maintaining APIs and backend services. Experienced with multiple programming languages, databases, and message brokers. Tailor this summary to the target role using only verified profile information.</p>
+        </section>
+
+        <section class="section" aria-labelledby="experience-heading">
+          <h2 class="section-title" id="experience-heading"><span class="icon" aria-hidden="true">▣</span> Professional Experience</h2>
+
+          <article class="experience-item">
+            <div class="date">2023<br>— 2026</div>
+            <div class="item-content">
+              <h3 class="item-title">Backend Software Engineer</h3>
+              <p class="item-subtitle">Company Name · Tehran, Iran</p>
+              <ul>
+                <li>Describe a verified responsibility or achievement, beginning with a clear action verb.</li>
+                <li>Explain the system, technical challenge, and measurable impact when supported by evidence.</li>
+              </ul>
+              <p class="tag-list"><strong>Technologies:</strong> Go, Python, PostgreSQL</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <div class="date">2020<br>— 2023</div>
+            <div class="item-content">
+              <h3 class="item-title">Backend Engineer</h3>
+              <p class="item-subtitle">Previous Company · Tehran, Iran</p>
+              <ul>
+                <li>Add concise, evidence-based bullets that demonstrate scope, ownership, and outcomes.</li>
+                <li>Prioritize details that match the target job description.</li>
+              </ul>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" aria-labelledby="projects-heading">
+          <h2 class="section-title" id="projects-heading"><span class="icon" aria-hidden="true">⌘</span> Selected Projects</h2>
+          <article class="project-item">
+            <div class="date">Project</div>
+            <div class="item-content">
+              <h3 class="item-title">Project Name</h3>
+              <p>Briefly describe the project's purpose, your role, and verified technical contributions.</p>
+              <p class="tag-list"><strong>Technologies:</strong> Go, PostgreSQL, Kafka</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" aria-labelledby="education-heading">
+          <h2 class="section-title" id="education-heading"><span class="icon" aria-hidden="true">▤</span> Education</h2>
+          <article class="education-item">
+            <div class="date">Year</div>
+            <div class="item-content">
+              <h3 class="item-title">Degree or Qualification</h3>
+              <p class="item-subtitle">Institution Name</p>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </article>
+
+  <p class="template-note">
+    Design reference only: replace all example data with verified profile details. For production,
+    generate semantic HTML from validated resume data, then render to PDF. Consider offering an
+    ATS-first single-column export; test the extracted PDF text and reading order before use.
+  </p>
+</body>
+</html>

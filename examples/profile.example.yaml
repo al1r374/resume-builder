@@ -1,0 +1,59 @@
+# Example candidate profile. Copy to ./profile.yaml and edit.
+# Dates: if using Jalali/Persian calendar, keep them as-is and set preferences.date_calendar: jalali.
+personal:
+  first_name: Ada
+  last_name: Lovelace
+  email: ada@example.com
+  phone: '+10000000000'
+  location: Remote
+  city: London
+  country: UK
+  linkedin: https://www.linkedin.com/in/example
+  github: https://github.com/example
+  website: null
+  current_job_title: Software Engineer
+  current_company: Example Corp
+  years_experience: 5
+  profile_photo_path: photo.jpg
+  # Private fields — never shown on resumes by default
+  date_of_birth: null
+  gender: null
+  military_service_status: null
+  marital_status: null
+  salary_expectation: null
+summary: 'Software engineer with experience building backend services and APIs.'
+skills:
+  programming_languages:
+    - Python
+    - Go
+  frameworks:
+    - Django
+  databases:
+    - PostgreSQL
+    - Redis
+experience:
+  - company: Example Corp
+    title: Software Engineer
+    start_date: 2021/01
+    end_date: Present
+    current: true
+    description: Built and maintained backend APIs using Python and PostgreSQL.
+    responsibilities: []
+    achievements: []
+    technologies:
+      - Python
+      - PostgreSQL
+education:
+  - school: Example University
+    degree: Bachelor's Degree
+    field_of_study: Computer Science
+    graduation_year: 2020
+projects: []
+certifications: []
+languages:
+  - name: English
+    level: Native
+preferences:
+  employment_type: Full-time
+  date_calendar: gregorian
+  include_private_fields_on_resume: false

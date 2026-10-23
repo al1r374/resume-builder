@@ -1,0 +1,11 @@
+# Keep folder structure; ignore personal documents
+photo.jpg
+photo.jpeg
+photo.png
+photo.webp
+*.pdf
+profile.yaml
+jobs/*
+!jobs/example.txt
+!.gitignore
+!README.md

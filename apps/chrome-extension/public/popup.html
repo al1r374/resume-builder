@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Resume Builder</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>AI Resume Builder</h1>
+        <p class="subtitle">Paste a job description. Your local profile is used automatically.</p>
+      </header>
+
+      <label class="field" for="job">
+        Job description
+        <textarea
+          id="job"
+          rows="10"
+          placeholder="Paste the full job description here. This extension does not read the active tab."
+        ></textarea>
+      </label>
+
+      <div class="row">
+        <label class="field" for="template">
+          Template
+          <select id="template">
+            <option value="modern">Modern</option>
+            <option value="ats">ATS-Friendly</option>
+          </select>
+        </label>
+        <label class="field" for="language">
+          Language
+          <select id="language">
+            <option value="en">English</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="generate" type="button">Generate Resume</button>
+
+      <div id="status" class="status" hidden></div>
+      <div id="match" class="match" hidden></div>
+      <button id="download" type="button" hidden>Download PDF</button>
+    </main>
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>

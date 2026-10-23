@@ -1,0 +1,27 @@
+{
+  "name": "@resume-builder/cli",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "resume-builder": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node --import tsx src/index.ts"
+  },
+  "dependencies": {
+    "@resume-builder/ai-provider": "workspace:*",
+    "@resume-builder/core": "workspace:*",
+    "@resume-builder/pdf-renderer": "workspace:*",
+    "@resume-builder/shared": "workspace:*",
+    "commander": "^13.1.0",
+    "dotenv": "^16.4.7",
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

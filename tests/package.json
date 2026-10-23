@@ -1,0 +1,23 @@
+{
+  "name": "@resume-builder/tests",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@resume-builder/ai-provider": "workspace:*",
+    "@resume-builder/core": "workspace:*",
+    "@resume-builder/pdf-renderer": "workspace:*",
+    "@resume-builder/resume-templates": "workspace:*",
+    "@resume-builder/shared": "workspace:*",
+    "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}

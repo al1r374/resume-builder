@@ -1,0 +1,34 @@
+node_modules/
+dist/
+build/
+coverage/
+.env
+.env.local
+*.log
+.DS_Store
+output/
+*.pdf
+!examples/**/*.pdf
+photo.jpg
+photo.jpeg
+photo.png
+assets/photo.*
+.turbo/
+*.tsbuildinfo
+playwright-report/
+test-results/
+.pnpm-store/
+profile.yaml.bak
+# Personal candidate data — use assets/ locally; examples/ ships anonymized samples
+/profile.yaml
+/photo.jpg
+/photo.jpeg
+/photo.png
+/photo.webp
+
+# Chrome extension build outputs mirrored at package root for Load unpacked UX
+apps/chrome-extension/manifest.json
+apps/chrome-extension/popup.html
+apps/chrome-extension/popup.css
+apps/chrome-extension/popup.js
+apps/chrome-extension/icons/

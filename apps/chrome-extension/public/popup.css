@@ -1,0 +1,134 @@
+:root {
+  --ink: #1f2933;
+  --muted: #52606d;
+  --line: #d9e2ec;
+  --bg: #f7fafc;
+  --panel: #ffffff;
+  --accent: #0f766e;
+  --accent-hover: #0d9488;
+  --danger: #b91c1c;
+  --ok: #047857;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 360px;
+  color: var(--ink);
+  background: linear-gradient(180deg, #eef6f5 0%, var(--bg) 40%);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 13px;
+}
+
+.app {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  font: inherit;
+  font-weight: 400;
+  background: var(--panel);
+  color: var(--ink);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+}
+
+button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+#download {
+  background: #134e4a;
+}
+
+.status {
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  white-space: pre-wrap;
+  line-height: 1.35;
+}
+
+.status.error {
+  color: var(--danger);
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+.status.ok {
+  color: var(--ok);
+  border-color: #a7f3d0;
+  background: #ecfdf5;
+}
+
+.match {
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.match strong {
+  display: block;
+  margin-bottom: 4px;
+}
